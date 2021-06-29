@@ -1,0 +1,97 @@
+<div class="container-fluid p-0">
+  <div class="row mt-3 justify-content-center">
+    <div class="col-md-6">
+      <h1 class="text-center mb-3">Register</h1>
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="formGroup" (ngSubmit)="onFormSubmit()">
+            <div class="row mb-2">
+              <div class="col-md-6">
+                <img src="{{imgPhoto}}" alt="Photo" height="90" width="90">
+              </div>
+              <div class="col-md-6">
+                <label for="formFile" class="form-label">Photo</label>
+                <input class="form-control" type="file" (change)="onPhotoSelect($event)">
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="form-group col-md-6">
+                <label class="small">First Name</label>
+                <input size="small" type="text" placeholder="First Name" class="form-control"
+                  formControlName='firstName'
+                  [ngClass]="{'form-control-danger':formGroup.invalid && (formGroup.dirty || formGroup.touched)}" />
+                <div class="invalid text-danger" *ngIf="submitted && fC.firstName.errors">
+                  <div *ngIf="submitted && fC.firstName.errors?.required">Please type first name</div>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="small">Last Name</label>
+                <input size="small" type="text" placeholder="Last Name" class="form-control" formControlName='lastName'
+                  [ngClass]="{'form-control-danger':formGroup.invalid && (formGroup.dirty || formGroup.touched)}" />
+                <div class="invalid text-danger" *ngIf="submitted && fC.lastName.errors">
+                  <div *ngIf="submitted && fC.lastName.errors?.required">Please type last name</div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="form-group">
+                <label class="small">Email</label>
+                <input size="small" type="email" placeholder="Email" class="form-control" formControlName='email'
+                  [ngClass]="{'form-control-danger':formGroup.invalid && (formGroup.dirty || formGroup.touched)}" />
+                <div class="invalid text-danger" *ngIf="submitted && fC.email.errors">
+                  <div *ngIf="submitted && fC.email.errors?.required">Please type your email</div>
+                  <div *ngIf="submitted && fC.email.errors?.email">Invalid email</div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="form-group">
+                <label class="small">Mobile</label>
+                <input size="small" type="number" placeholder="Mobile" class="form-control" formControlName='mobile'
+                  [ngClass]="{'form-control-danger':formGroup.invalid && (formGroup.dirty || formGroup.touched)}" />
+                <div class="invalid text-danger" *ngIf="submitted && fC.mobile.errors">
+                  <div *ngIf="submitted && fC.mobile.errors?.required">Please type your mobile</div>
+                  <div *ngIf="submitted && fC.mobile.errors?.pattern">Invalid mobile number</div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2" formGroupName="address">
+              <div class="form-group col-md-6">
+                <legend class="small">State</legend>
+                <select #state class="form-select" (change)="selectCity(state.value)" formControlName="state"
+                  [ngClass]="{'form-control-danger':formGroup.invalid && (formGroup.dirty || formGroup.touched)}">
+                  <option selected disabled value="">Select State</option>
+                  <option *ngFor="let item of states;" value="{{item}}">{{item}}</option>
+                </select>
+                <div class="invalid text-danger" *ngIf="submitted && fC.address.controls.state.errors">
+                  <div *ngIf="submitted && fC.address.controls.state.errors?.required">Please select state</div>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <legend class="small">City</legend>
+                <select class="form-select" formControlName="city"
+                  [ngClass]="{'form-control-danger':formGroup.invalid && (formGroup.dirty || formGroup.touched)}">
+                  <option selected disabled value="">Select City</option>
+                  <option *ngFor="let item of cities;" value="{{item}}">{{item}}</option>
+                </select>
+                <div class="invalid text-danger" *ngIf="submitted && fC.address.controls.city.errors">
+                  <div *ngIf="submitted && fC.address.controls.city.errors?.required">Please select city</div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3 justify-content-center">
+              <div class="col-auto">
+                <button class="btn btn-primary shadow-sm">Register</button>
+              </div>
+            </div>
+          </form>
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <button type="button" class="btn btn-link" routerLink='/auth/login'>Go To Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

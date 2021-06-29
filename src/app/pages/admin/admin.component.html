@@ -1,0 +1,19 @@
+<div class="Container-fluid p-0">
+  <nav class="navbar navbar-expand navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink='/admin'>Dashboard</a>
+      <ul class="navbar-nav mb-2 justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink='/admin/dashboard' routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/admin/users' routerLinkActive="active">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn nav-link" (click)='logout()'>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+*, body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.custom-file {
+  max-width: 100% !important;
+  >input {
+    max-width: 100% !important;
+  }
+}
